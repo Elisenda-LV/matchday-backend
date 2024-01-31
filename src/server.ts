@@ -1,6 +1,11 @@
 import express, { Application, Response, Request } from "express";
 import cors from 'cors';
 import db from './config/db';
+import routerLeague from "./routes/leagues.routes";
+import routerPlayer from "./routes/players.routes";
+import routerSport from "./routes/sports.routes";
+import routerTeam from "./routes/teams.routes";
+import routerTP from "./routes/team-player.routes";
 
 
 
@@ -38,6 +43,11 @@ class Server {
         })
 
         //API routes
+        this.app.use('/leagues', routerLeague);
+        this.app.use('/players', routerPlayer);
+        this.app.use('/sports', routerSport);
+        this.app.use('/teams', routerTeam);
+        this.app.use('/tp', routerTP);
 
 
 

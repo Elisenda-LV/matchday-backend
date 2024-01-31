@@ -15,6 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const db_1 = __importDefault(require("./config/db"));
+const leagues_routes_1 = __importDefault(require("./routes/leagues.routes"));
+const players_routes_1 = __importDefault(require("./routes/players.routes"));
+const sports_routes_1 = __importDefault(require("./routes/sports.routes"));
+const teams_routes_1 = __importDefault(require("./routes/teams.routes"));
+const team_player_routes_1 = __importDefault(require("./routes/team-player.routes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -40,6 +45,11 @@ class Server {
             });
         });
         //API routes
+        this.app.use('/leagues', leagues_routes_1.default);
+        this.app.use('/players', players_routes_1.default);
+        this.app.use('/sports', sports_routes_1.default);
+        this.app.use('/teams', teams_routes_1.default);
+        this.app.use('/tp', team_player_routes_1.default);
     }
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {
