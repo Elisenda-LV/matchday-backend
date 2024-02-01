@@ -4,4 +4,8 @@ const express_1 = require("express");
 const leagues_controller_1 = require("../controllers/leagues.controller");
 const routerLeague = (0, express_1.Router)();
 routerLeague.get('/', leagues_controller_1.getListLeagues);
+routerLeague.get('/:id', leagues_controller_1.getLeagueById);
+routerLeague.delete('/:id', leagues_controller_1.deleteLeague);
+routerLeague.post('/', leagues_controller_1.postLeague);
+routerLeague.put('/:id', leagues_controller_1.updateLeague);
 exports.default = routerLeague;

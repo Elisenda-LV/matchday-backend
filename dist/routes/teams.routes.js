@@ -4,4 +4,8 @@ const express_1 = require("express");
 const teams_controller_1 = require("../controllers/teams.controller");
 const routerTeam = (0, express_1.Router)();
 routerTeam.get('/', teams_controller_1.getListTeams);
+routerTeam.get('/:id', teams_controller_1.getTeamsById);
+routerTeam.delete('/:id', teams_controller_1.deleteTeam);
+routerTeam.post('/', teams_controller_1.postTeam);
+routerTeam.put('/:id', teams_controller_1.updateTeam);
 exports.default = routerTeam;
