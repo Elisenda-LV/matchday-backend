@@ -11,14 +11,10 @@ const League = db.define('League', {
         allowNull: false,
     },
     sport_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.MEDIUMINT,
         allowNull: false,
     },
     league_name: {
-        type: DataTypes.STRING,
-
-    },
-    sport:{
         type: DataTypes.STRING,
 
     },
@@ -39,9 +35,13 @@ const League = db.define('League', {
 
     },
     create_at: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
 
-    }
+    },
+    updated_at: {
+        type: DataTypes.DATE,
+
+    },
 
 
 },{

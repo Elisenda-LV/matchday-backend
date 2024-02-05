@@ -1,13 +1,15 @@
 import { Router } from "express";
 import { deleteLeague, getLeagueById, getListLeagues, postLeague, updateLeague } from "../controllers/leagues.controller";
+import { idValidator } from "../validation/generic.validation";
+import { leagueValidator } from "../validation/league.validation";
 
 const routerLeague = Router();
 
 routerLeague.get('/', getListLeagues);
-routerLeague.get('/:id', getLeagueById);
-routerLeague.delete('/:id', deleteLeague);
-routerLeague.post('/', postLeague);
-routerLeague.put('/:id', updateLeague)
+routerLeague.get('/:id', idValidator, getLeagueById);
+routerLeague.delete('/:id', idValidator, deleteLeague);
+routerLeague.post('/', leagueValidator, postLeague);
+routerLeague.put('/:id', idValidator, leagueValidator, updateLeague)
 
 
 export default routerLeague;

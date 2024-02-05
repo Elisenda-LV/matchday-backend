@@ -14,6 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateLeague = exports.postLeague = exports.deleteLeague = exports.getLeagueById = exports.getListLeagues = void 0;
 const leagues_models_1 = __importDefault(require("../models/leagues.models"));
+const express_validator_1 = require("express-validator");
+//CRUD LEAGUES
 //Show Leagues list :
 const getListLeagues = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -33,49 +35,66 @@ const getListLeagues = (req, res) => __awaiter(void 0, void 0, void 0, function*
 exports.getListLeagues = getListLeagues;
 //Show League by Id:
 const getLeagueById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
-    const league = yield leagues_models_1.default.findByPk(id);
-    if (league) {
-        res.status(200).json(league);
+    try {
+        const { id } = req.params;
+        const league = yield leagues_models_1.default.findByPk(id);
+        if (league) {
+            res.status(200).json(league);
+        }
+        else {
+            res.status(404).json({
+                msg: `There is no league with that id ${id}`
+            });
+        }
     }
-    else {
-        res.status(404).json({
-            msg: `There is no league with that id ${id}`
-        });
+    catch (error) {
+        console.error("Error retrieving id league:", error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
 exports.getLeagueById = getLeagueById;
 //Delete league:
 const deleteLeague = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
-    const league = yield leagues_models_1.default.findByPk(id);
-    if (league) {
-        yield league.destroy();
-        res.json({
-            msg: 'League deleted'
-        });
+    try {
+        const { id } = req.params;
+        const errors = (0, express_validator_1.validationResult)(req);
+        //If there are validation errors, respond with a 400 Bad Request status.
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        else {
+            const league = yield leagues_models_1.default.findByPk(id);
+            yield league.destroy();
+            res.json({
+                msg: 'League deleted'
+            });
+        }
     }
-    else {
-        res.status(404).json({
-            msg: `There is no league with that id ${id}`
-        });
+    catch (error) {
+        console.error('Error retrieving id league:', error);
+        res.status(500).json({ msg: 'Internal Server Error' });
     }
 });
 exports.deleteLeague = deleteLeague;
 //Add a new league:
 const postLeague = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { body } = req;
     try {
-        yield leagues_models_1.default.create(body);
-        res.json({
-            msg: 'League added'
-        });
+        const errors = (0, express_validator_1.validationResult)(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        else {
+            const { body } = req;
+            yield leagues_models_1.default.create(body);
+            res.json({
+                msg: 'League added',
+                data: body,
+            });
+        }
     }
     catch (error) {
-        console.log(error);
-        res.json({
-            msg: 'Connect to support...'
-        });
+        console.error('Error retrieving post league:', error);
+        res.status(500).json({ msg: 'Internal Server Error' });
     }
 });
 exports.postLeague = postLeague;
@@ -98,10 +117,8 @@ const updateLeague = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         }
     }
     catch (error) {
-        console.log(error);
-        res.json({
-            msg: 'Connect to support...'
-        });
+        console.error('Error retrieving post league:', error);
+        res.status(500).json({ msg: 'Internal Server Error' });
     }
 });
 exports.updateLeague = updateLeague;

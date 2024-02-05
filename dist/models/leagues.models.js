@@ -13,13 +13,10 @@ const League = db_1.default.define('League', {
         allowNull: false,
     },
     sport_id: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.MEDIUMINT,
         allowNull: false,
     },
     league_name: {
-        type: sequelize_1.DataTypes.STRING,
-    },
-    sport: {
         type: sequelize_1.DataTypes.STRING,
     },
     gender: {
@@ -35,8 +32,11 @@ const League = db_1.default.define('League', {
         type: sequelize_1.DataTypes.STRING,
     },
     create_at: {
-        type: sequelize_1.DataTypes.STRING,
-    }
+        type: sequelize_1.DataTypes.DATE,
+    },
+    updated_at: {
+        type: sequelize_1.DataTypes.DATE,
+    },
 }, {
     createdAt: false,
     updatedAt: false,
