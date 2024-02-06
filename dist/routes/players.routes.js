@@ -2,6 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const players_controllers_1 = require("../controllers/players.controllers");
+const generic_validation_1 = require("../validation/generic.validation");
+const player_validation_1 = require("../validation/player.validation");
 const routerPlayer = (0, express_1.Router)();
 routerPlayer.get('/', players_controllers_1.getListPlayers);
+routerPlayer.get('/:id', generic_validation_1.idValidator, players_controllers_1.getPlayerById);
+routerPlayer.delete('/:id', generic_validation_1.idValidator, players_controllers_1.deletePlayer);
+routerPlayer.post('/', player_validation_1.playerValidator, players_controllers_1.postPlayer);
+routerPlayer.put('/:id', generic_validation_1.idValidator, player_validation_1.playerValidator, players_controllers_1.updatePlayer);
 exports.default = routerPlayer;

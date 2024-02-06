@@ -13,11 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getListTeamPlayers = void 0;
-const teams_players_models_1 = __importDefault(require("../models/teams-players.models"));
+const teams_players_model_1 = __importDefault(require("../models/teams-players.model"));
 //Show teams_players list:
 const getListTeamPlayers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const tp = yield teams_players_models_1.default.findAll();
+        const tp = yield teams_players_model_1.default.findAll();
         if (tp.length === 0) {
             res.status(404).json({ message: "No team_player found" });
         }

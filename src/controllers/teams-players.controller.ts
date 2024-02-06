@@ -1,5 +1,7 @@
-import TeamPlayer from "../models/teams-players.models";
+import TeamPlayer from '../models/teams-players.model';
 import { Request, Response } from "express";
+
+
 
 //Show teams_players list:
 
