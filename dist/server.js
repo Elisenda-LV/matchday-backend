@@ -20,6 +20,7 @@ const players_routes_1 = __importDefault(require("./routes/players.routes"));
 const sports_routes_1 = __importDefault(require("./routes/sports.routes"));
 const teams_routes_1 = __importDefault(require("./routes/teams.routes"));
 const team_player_routes_1 = __importDefault(require("./routes/team-player.routes"));
+const users_routes_1 = __importDefault(require("./routes/users.routes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -46,6 +47,7 @@ class Server {
         });
         //API routes
         this.app.use('/leagues', leagues_routes_1.default);
+        this.app.use('/users', users_routes_1.default);
         this.app.use('/players', players_routes_1.default);
         this.app.use('/sports', sports_routes_1.default);
         this.app.use('/teams', teams_routes_1.default);

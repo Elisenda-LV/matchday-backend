@@ -47,6 +47,7 @@ export const changePasswordValidator = [
 
     check("token")
         .exists(),
+        
     check("password")
         .exists()
         .withMessage("Password is required")

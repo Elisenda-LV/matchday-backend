@@ -6,6 +6,7 @@ import routerPlayer from "./routes/players.routes";
 import routerSport from "./routes/sports.routes";
 import routerTeam from "./routes/teams.routes";
 import routerTP from "./routes/team-player.routes";
+import routeUsers from "./routes/users.routes";
 
 
 
@@ -44,6 +45,7 @@ class Server {
 
         //API routes
         this.app.use('/leagues', routerLeague);
+        this.app.use('/users', routeUsers);
         this.app.use('/players', routerPlayer);
         this.app.use('/sports', routerSport);
         this.app.use('/teams', routerTeam);
