@@ -41,10 +41,26 @@ const User = db.define('User', {
 })
 
 
-const Role = db.define('Rol', {});
+const Role = db.define('Role', {
+    id_role: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    role_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    description: {
+        type: DataTypes.STRING,
+    },
+});
 
-User.belongsToMany(Role, { through: Role });
-Role.belongsToMany(User, { through: Role });
+
+//Define associations between User and Role:
+
+User.belongsTo(Role, { foreignKey: 'role', as: 'userRole' });
+
 
 
 export default User
