@@ -1,14 +1,16 @@
 import { Router } from "express";
 import { deleteTeam, getListTeams, getTeamsById, postTeam, updateTeam } from "../controllers/teams.controller";
+import { idValidator } from "../validation/generic.validation";
+import { teamValidator } from "../validation/team.validation";
 
 
 const routerTeam = Router();
 
 routerTeam.get('/', getListTeams);
-routerTeam.get('/:id', getTeamsById);
-routerTeam.delete('/:id', deleteTeam);
-routerTeam.post('/', postTeam);
-routerTeam.put('/:id', updateTeam);
+routerTeam.get('/:id', idValidator, getTeamsById);
+routerTeam.delete('/:id', idValidator, deleteTeam);
+routerTeam.post('/', teamValidator, postTeam);
+routerTeam.put('/:id', idValidator, teamValidator, updateTeam);
 
 
 export default routerTeam;

@@ -2,10 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const teams_controller_1 = require("../controllers/teams.controller");
+const generic_validation_1 = require("../validation/generic.validation");
+const team_validation_1 = require("../validation/team.validation");
 const routerTeam = (0, express_1.Router)();
 routerTeam.get('/', teams_controller_1.getListTeams);
-routerTeam.get('/:id', teams_controller_1.getTeamsById);
-routerTeam.delete('/:id', teams_controller_1.deleteTeam);
-routerTeam.post('/', teams_controller_1.postTeam);
-routerTeam.put('/:id', teams_controller_1.updateTeam);
+routerTeam.get('/:id', generic_validation_1.idValidator, teams_controller_1.getTeamsById);
+routerTeam.delete('/:id', generic_validation_1.idValidator, teams_controller_1.deleteTeam);
+routerTeam.post('/', team_validation_1.teamValidator, teams_controller_1.postTeam);
+routerTeam.put('/:id', generic_validation_1.idValidator, team_validation_1.teamValidator, teams_controller_1.updateTeam);
 exports.default = routerTeam;
