@@ -1,8 +1,22 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes , Model } from 'sequelize';
 import db from '../config/db';
+import sequelize from '../config/db';
 
 
-const User = db.define('User', {
+interface UserAttributes {
+    id_user: string;
+    name: string;
+    email: string;
+    password: string;
+    role: string;
+    create_at: Date;
+    
+}
+
+interface UserInstance extends Model<UserAttributes>, UserAttributes {}
+
+
+const User = sequelize.define<UserInstance>('User', {
 
     id_user : {
         type: DataTypes.INTEGER,
@@ -27,7 +41,7 @@ const User = db.define('User', {
         allowNull: false,
     },
     role: {
-        type: DataTypes.ENUM('admin', 'user', 'guest')
+        type: DataTypes.ENUM('1', '2', '3')
    
     },
     create_at: {
@@ -38,6 +52,7 @@ const User = db.define('User', {
 }, {
     createdAt: false,
     updatedAt: false,
+    modelName: 'User',
 })
 
 
@@ -63,4 +78,4 @@ User.belongsTo(Role, { foreignKey: 'role', as: 'userRole' });
 
 
 
-export default User
+export default User; 

@@ -42,7 +42,6 @@ export const getLeagueById = async(req: Request, res: Response) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 
-
 }
 
 //Delete league:
@@ -128,6 +127,5 @@ export const updateLeague = async (req: Request, res: Response) => {
         res.status(500).json({ msg: 'Internal Server Error'})
 
     }
-   
    
 }
