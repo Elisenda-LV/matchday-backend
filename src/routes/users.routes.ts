@@ -5,9 +5,9 @@ import authenticateToken from "../middlewares/authenticate-token";
 
 
 
-const routeUsers = Router();
+const routerUsers = Router();
 
-routeUsers.get('/:id', authenticateToken, idValidator, getUserById);
+routerUsers.get('/:id', authenticateToken, idValidator, getUserById);
 
 
-export default routeUsers;
+export default routerUsers;

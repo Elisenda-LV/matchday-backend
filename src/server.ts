@@ -1,12 +1,14 @@
 import express, { Application, Response, Request } from "express";
 import cors from 'cors';
 import db from './config/db';
+
 import routerLeague from "./routes/leagues.routes";
 import routerPlayer from "./routes/players.routes";
 import routerSport from "./routes/sports.routes";
 import routerTeam from "./routes/teams.routes";
 import routerTP from "./routes/team-player.routes";
-import routeUsers from "./routes/users.routes";
+import routerAuth from "./routes/auth.routes";
+import routerUsers from "./routes/users.routes";
 
 
 
@@ -45,7 +47,8 @@ class Server {
 
         //API routes
         this.app.use('/leagues', routerLeague);
-        this.app.use('/users', routeUsers);
+        this.app.use('/auth', routerAuth);
+        this.app.use('/users', routerUsers);
         this.app.use('/players', routerPlayer);
         this.app.use('/sports', routerSport);
         this.app.use('/teams', routerTeam);

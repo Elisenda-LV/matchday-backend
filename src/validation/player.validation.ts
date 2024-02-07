@@ -20,13 +20,15 @@ export const playerValidator = [
         .withMessage("The name should be a maximum of 20 characters."),
 
     check('surname')
-        .withMessage("Name is required")
+        .exists()
+        .withMessage("Surname is required")
         .isString()
-        .withMessage("Name should be a string")
+        .withMessage("Surname should be a string")
         .isLength({ max: 40 })
         .withMessage("The name should be a maximum of 40 characters."),
 
     check('born_date')
+        .exists()
         .withMessage("Born date is required")
         .isDate()
         .withMessage("Born date should be a date with format (YYYY-MM-DD)")
