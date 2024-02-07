@@ -7,7 +7,7 @@ import authenticateToken from "../middlewares/authenticate-token";
 
 const routerUsers = Router();
 
-routerUsers.get('/:id', authenticateToken, idValidator, getUserById);
+//routerUsers.get('/:id', authenticateToken, idValidator, getUserById);
 
 
 export default routerUsers;
