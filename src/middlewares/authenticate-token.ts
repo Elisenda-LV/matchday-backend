@@ -2,8 +2,18 @@ import jwt, { Secret, JwtPayload }  from 'jsonwebtoken';
 import User from '../models/users.model';
 import { NextFunction, Request, Response } from 'express';
 
+interface Users {
+    id_user: string;
+    name: string;
+    email: string;
+    password: string;
+    role: string;
+    create_at: Date;
+}
 
-const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
+interface AuthenticatedRequest extends Request { user: Users }
+
+const authenticateToken = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
 
     try {
         const { cookies } = req;
@@ -24,10 +34,8 @@ const authenticateToken = async (req: Request, res: Response, next: NextFunction
                 })
             }
         
-        //req.user = user;
+        req.user = user;
         next();
-
-      
 
     } catch (error) {
         console.error(error);
