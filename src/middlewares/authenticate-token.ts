@@ -1,4 +1,4 @@
-import jwt, { Secret, JwtPayload }  from 'jsonwebtoken';
+import jwt, { JwtPayload }  from 'jsonwebtoken';
 import User from '../models/users.model';
 import { NextFunction, Request, Response } from 'express';
 
@@ -13,7 +13,7 @@ interface Users {
 
 interface AuthenticatedRequest extends Request { user: Users }
 
-const authenticateToken = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+const authenticateToken  = async (req: AuthenticatedRequest, res: Response, next: NextFunction) =>  {
 
     try {
         const { cookies } = req;
@@ -26,7 +26,7 @@ const authenticateToken = async (req: AuthenticatedRequest, res: Response, next:
         }
 
         const decodedToken = jwt.verify(accesToken, process.env.JWT_SECRET as jwt.Secret) as JwtPayload;
-        const user = await User.findByPk(decodedToken.user_id);
+        const user = await User.findByPk(decodedToken.id_user);
             if (!user) {
                 return res.status(401).json({
                     code: -70,

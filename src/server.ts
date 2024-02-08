@@ -1,6 +1,7 @@
 import express, { Application, Response, Request } from "express";
 import cors from 'cors';
 import db from './config/db';
+import cookieParser from "cookie-parser";
 
 import routerLeague from "./routes/leagues.routes";
 import routerPlayer from "./routes/players.routes";
@@ -36,6 +37,8 @@ class Server {
     middlewares(){
         this.app.use(express.json());
         this.app.use(cors());
+        this.app.use(cookieParser());
+        this.app.use(express.urlencoded({ extended: true }));
     }
 
     routes(){
@@ -53,9 +56,7 @@ class Server {
         this.app.use('/sports', routerSport);
         this.app.use('/teams', routerTeam);
         this.app.use('/tp', routerTP);
-
-
-
+        
     }
 
     async dbConnect(){
