@@ -9,5 +9,5 @@ routerTeam.get('/', teams_controller_1.getListTeams);
 routerTeam.get('/:id', generic_validation_1.idValidator, teams_controller_1.getTeamsById);
 routerTeam.delete('/:id', generic_validation_1.idValidator, teams_controller_1.deleteTeam);
 routerTeam.post('/', team_validation_1.teamValidator, teams_controller_1.postTeam);
-routerTeam.put('/:id', generic_validation_1.idValidator, team_validation_1.teamValidator, teams_controller_1.updateTeam);
+routerTeam.patch('/:id', generic_validation_1.idValidator, team_validation_1.teamValidator, teams_controller_1.updateTeam);
 exports.default = routerTeam;

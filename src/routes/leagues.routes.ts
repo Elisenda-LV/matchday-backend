@@ -9,7 +9,7 @@ routerLeague.get('/', getListLeagues);
 routerLeague.get('/:id', idValidator, getLeagueById);
 routerLeague.delete('/:id', idValidator, deleteLeague);
 routerLeague.post('/', leagueValidator, postLeague);
-routerLeague.put('/:id', idValidator, leagueValidator, updateLeague)
+routerLeague.patch('/:id', idValidator, leagueValidator, updateLeague)
 
 
 export default routerLeague;

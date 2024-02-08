@@ -9,5 +9,5 @@ routerPlayer.get('/', players_controllers_1.getListPlayers);
 routerPlayer.get('/:id', generic_validation_1.idValidator, players_controllers_1.getPlayerById);
 routerPlayer.delete('/:id', generic_validation_1.idValidator, players_controllers_1.deletePlayer);
 routerPlayer.post('/', player_validation_1.playerValidator, players_controllers_1.postPlayer);
-routerPlayer.put('/:id', generic_validation_1.idValidator, player_validation_1.playerValidator, players_controllers_1.updatePlayer);
+routerPlayer.patch('/:id', generic_validation_1.idValidator, player_validation_1.playerValidator, players_controllers_1.updatePlayer);
 exports.default = routerPlayer;

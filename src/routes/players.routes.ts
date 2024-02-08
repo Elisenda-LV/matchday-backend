@@ -9,7 +9,7 @@ routerPlayer.get('/', getListPlayers);
 routerPlayer.get('/:id', idValidator, getPlayerById);
 routerPlayer.delete('/:id', idValidator, deletePlayer);
 routerPlayer.post('/', playerValidator, postPlayer);
-routerPlayer.put('/:id', idValidator, playerValidator, updatePlayer);
+routerPlayer.patch('/:id', idValidator, playerValidator, updatePlayer);
 
 
 export default routerPlayer;

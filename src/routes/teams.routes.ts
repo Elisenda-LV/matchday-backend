@@ -10,7 +10,7 @@ routerTeam.get('/', getListTeams);
 routerTeam.get('/:id', idValidator, getTeamsById);
 routerTeam.delete('/:id', idValidator, deleteTeam);
 routerTeam.post('/', teamValidator, postTeam);
-routerTeam.put('/:id', idValidator, teamValidator, updateTeam);
+routerTeam.patch('/:id', idValidator, teamValidator, updateTeam);
 
 
 export default routerTeam;

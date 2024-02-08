@@ -9,5 +9,5 @@ routerLeague.get('/', leagues_controller_1.getListLeagues);
 routerLeague.get('/:id', generic_validation_1.idValidator, leagues_controller_1.getLeagueById);
 routerLeague.delete('/:id', generic_validation_1.idValidator, leagues_controller_1.deleteLeague);
 routerLeague.post('/', league_validation_1.leagueValidator, leagues_controller_1.postLeague);
-routerLeague.put('/:id', generic_validation_1.idValidator, league_validation_1.leagueValidator, leagues_controller_1.updateLeague);
+routerLeague.patch('/:id', generic_validation_1.idValidator, league_validation_1.leagueValidator, leagues_controller_1.updateLeague);
 exports.default = routerLeague;
