@@ -1,6 +1,6 @@
 ## Matchday - Backend
 
-Matchday is a personal project. It is an app to manage leagues, tournaments and teams for all players and sports.
+Matchday is an app designed to manage leagues, tournaments, and teams for players of all sports.
 
 This REST API, developed with Node.js, Express, and Sequelize to connect to a MariaDB database, includes user authentication features such as register, login, forgot password, change password and log out.
 
@@ -128,10 +128,10 @@ Example response:
 
 Thank you for considering contributing to the project! If you wish to contribute, follow these steps:
 
-1. Fork the Project:
+**1. Fork the Project:**
 Fork the project using the "Fork" button at the top right of the page.
 
-2. Clone Your Forked Repository:
+**2. Clone Your Forked Repository:**
 Clone the repository to your local machine with the command:
 
 ```
@@ -139,7 +139,7 @@ git clone https://github.com/Elisenda-LV/matchday-backend.git
 
 ```
 
-3. Create a Branch:
+**3. Create a Branch:**
 Create a branch for your contribution:
 
 ```
@@ -147,10 +147,10 @@ git checkout -b your-branch-name
 
 ```
 
-4. Make Changes:
+**4. Make Changes:**
 Make the necessary changes in your branch.
 
-5. Commit Changes:
+**5. Commit Changes:**
 Commit changes with descriptive messages:
 
 ```
@@ -158,7 +158,7 @@ git commit -m "Description of the changes"
 
 ```
 
-6. Push Your Changes:
+**6. Push Your Changes:**
 Push your changes to your repository:
 
 ```
@@ -166,11 +166,11 @@ git push origin your-branch-name
 
 ```
 
-7. Open a Pull Request (PR):
+**7. Open a Pull Request (PR):**
 Open a PR from your branch to the project's main branch.
 Provide a clear and detailed description of your changes.
 
-8. Code Review:
+**8. Code Review:**
 Proposed changes will be reviewed and discussed before merging.
 
 
@@ -182,4 +182,4 @@ Proposed changes will be reviewed and discussed before merging.
 - Document any significant change in the README or relevant documentation.
 
 
-### Thank you for your contribution!
+**Thank you for your contribution!**
