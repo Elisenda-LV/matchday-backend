@@ -24,8 +24,8 @@ npm start
 ### 📌 Project Estructure
 
 The project structure follows a modular design to facilitate scalability and maintenance. Below, the main folders and files are described:
-
-####/src (Source):
+```
+/src (Source):
 - /config: Project configurations.
 - /controllers: Business logic controllers.
 - /middlewares: Custom middleware.
@@ -33,7 +33,7 @@ The project structure follows a modular design to facilitate scalability and mai
 - /routes: Definition of routes and associated controllers.
 - /utils: Utilities and auxiliary functions.
 - /validations: Used to ensure the integrity and consistency of data in an application.
-
+```
 
 ### 📌 Endpoints
 
