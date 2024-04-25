@@ -56,7 +56,7 @@ class Server {
         this.app.use('/players', players_routes_1.default);
         this.app.use('/sports', sports_routes_1.default);
         this.app.use('/teams', teams_routes_1.default);
-        this.app.use('/tp', team_player_routes_1.default);
+        this.app.use('/teamsplayers', team_player_routes_1.default);
     }
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {

@@ -1,4 +1,4 @@
-import Team from '../models/teams-players.model';
+import  Team  from "../models/teams.model";
 import { Request, Response } from "express";
 import { validationResult } from 'express-validator';
 

@@ -13,6 +13,8 @@ import routerUsers from "./routes/users.routes";
 
 
 
+
+
 class Server {
 
     private app: Application;
@@ -55,7 +57,8 @@ class Server {
         this.app.use('/players', routerPlayer);
         this.app.use('/sports', routerSport);
         this.app.use('/teams', routerTeam);
-        this.app.use('/tp', routerTP);
+        this.app.use('/teamsplayers', routerTP);
+      
         
     }
 

@@ -13,13 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateTeam = exports.postTeam = exports.deleteTeam = exports.getTeamsById = exports.getListTeams = void 0;
-const teams_players_model_1 = __importDefault(require("../models/teams-players.model"));
+const teams_model_1 = __importDefault(require("../models/teams.model"));
 const express_validator_1 = require("express-validator");
 //CRUD TEAMS
 //Show Teams list:
 const getListTeams = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const teams = yield teams_players_model_1.default.findAll();
+        const teams = yield teams_model_1.default.findAll();
         if (teams.length === 0) {
             res.status(404).json({ message: "No teams found" });
         }
@@ -37,7 +37,7 @@ exports.getListTeams = getListTeams;
 const getTeamsById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
-        const team = yield teams_players_model_1.default.findByPk(id);
+        const team = yield teams_model_1.default.findByPk(id);
         if (team) {
             res.status(200).json(team);
         }
@@ -63,7 +63,7 @@ const deleteTeam = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             return res.status(400).json({ errors: errors.array() });
         }
         else {
-            const team = yield teams_players_model_1.default.findByPk(id);
+            const team = yield teams_model_1.default.findByPk(id);
             yield team.destroy();
             res.json({
                 msg: 'Team deleted'
@@ -85,7 +85,7 @@ const postTeam = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
         else {
             const { body } = req;
-            yield teams_players_model_1.default.create(body);
+            yield teams_model_1.default.create(body);
             res.json({
                 msg: 'Team added',
                 data: body,
@@ -103,7 +103,7 @@ const updateTeam = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const { id } = req.params;
     const { body } = req;
     try {
-        const team = yield teams_players_model_1.default.findByPk(id);
+        const team = yield teams_model_1.default.findByPk(id);
         if (team) {
             yield team.update(body);
             res.json({

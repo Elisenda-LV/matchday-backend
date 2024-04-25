@@ -9,6 +9,12 @@ export const leagueValidator = [
         .isInt()
         .withMessage('Sport is a integer'),
 
+    check('user_id')
+        .exists()
+        .withMessage("User is required")
+        .isInt()
+        .withMessage('User is a integer'),
+
     check('league_name')
         .exists()
         .withMessage("Name is required")

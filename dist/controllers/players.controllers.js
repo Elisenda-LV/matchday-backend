@@ -8,17 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updatePlayer = exports.postPlayer = exports.deletePlayer = exports.getPlayerById = exports.getListPlayers = void 0;
-const teams_players_model_1 = __importDefault(require("../models/teams-players.model"));
+const teams_players_model_1 = require("../models/teams-players.model");
 const express_validator_1 = require("express-validator");
 //Show Players list:
 const getListPlayers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const players = yield teams_players_model_1.default.findAll();
+        const players = yield teams_players_model_1.Player.findAll();
         if (players.length === 0) {
             res.status(404).json({ message: "No players found" });
         }
@@ -36,7 +33,7 @@ exports.getListPlayers = getListPlayers;
 const getPlayerById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
-        const player = yield teams_players_model_1.default.findByPk(id);
+        const player = yield teams_players_model_1.Player.findByPk(id);
         if (player) {
             res.status(200).json(player);
         }
@@ -62,7 +59,7 @@ const deletePlayer = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             return res.status(400).json({ errors: errors.array() });
         }
         else {
-            const player = yield teams_players_model_1.default.findByPk(id);
+            const player = yield teams_players_model_1.Player.findByPk(id);
             yield player.destroy();
             res.json({
                 msg: 'Player deleted'
@@ -84,7 +81,7 @@ const postPlayer = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         }
         else {
             const { body } = req;
-            yield teams_players_model_1.default.create(body);
+            yield teams_players_model_1.Player.create(body);
             res.json({
                 msg: 'Player added',
                 data: body,
@@ -102,7 +99,7 @@ const updatePlayer = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     const { id } = req.params;
     const { body } = req;
     try {
-        const player = yield teams_players_model_1.default.findByPk(id);
+        const player = yield teams_players_model_1.Player.findByPk(id);
         if (player) {
             yield player.update(body);
             res.json({

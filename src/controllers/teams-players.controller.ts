@@ -1,4 +1,4 @@
-import TeamPlayer from '../models/teams-players.model';
+import { TeamPlayer } from '../models/teams-players.model';
 import { Request, Response } from "express";
 
 

@@ -1,59 +1,10 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import db from '../config/db';
 
+import Team from './teams.model';
 
-const Team = db.define('Team', {
-
-    id_team: {
-        type: DataTypes.MEDIUMINT,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'User', //users.model
-            key: 'id_user',     
-        },
-    },
-    sport_id: {
-        type: DataTypes.MEDIUMINT,
-        references: {
-            model: 'Sport', //sports.model
-            key: 'id_sport',  
-        },
-    },
-    team_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    gender: {
-        type: DataTypes.STRING,
-    },
-    category: {
-        type: DataTypes.STRING,
-    },
-    location: {
-        type: DataTypes.STRING,
-    },
-    description: {
-        type: DataTypes.STRING,
-    },
-    create_at: {
-        type: DataTypes.DATE,
-    },
-    updated_at: {
-        type: DataTypes.DATE,
-    },
-
-},{
-    createdAt: false,
-    updatedAt: false,
-
-})
-
-
-const Player = db.define ('Player', {
+class Player extends Model {}
+Player.init({
 
     id_player: {
         type: DataTypes.MEDIUMINT,
@@ -83,12 +34,14 @@ const Player = db.define ('Player', {
 
 
 }, {
+    sequelize: db, 
+    modelName: 'Player',
     createdAt: false,
     updatedAt: false,
 })
 
-
-const TeamPlayer = db.define('Team_player', {
+class TeamPlayer extends Model {}
+TeamPlayer.init({
 
     player_id: {
         type: DataTypes.MEDIUMINT,
@@ -104,18 +57,17 @@ const TeamPlayer = db.define('Team_player', {
 
     }
 }, {
+    sequelize: db, 
+    modelName: 'TeamPlayer',
     createdAt: false,
     updatedAt: false,
 })
-
-
 
 //Define associations between Teams and Players:
 
 Player.belongsToMany(Team, { through: TeamPlayer, foreignKey: 'player_id' });
 Team.belongsToMany(Player, { through: TeamPlayer, foreignKey: 'team_id' });
 
-
-export default Team; Player; TeamPlayer;
+export { Team, Player, TeamPlayer } 
 
 

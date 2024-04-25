@@ -1,5 +1,8 @@
 import { DataTypes } from 'sequelize';
 import db from '../config/db';
+import Team from './teams.model';
+
+
 
 
 const League = db.define('League', {
@@ -11,6 +14,10 @@ const League = db.define('League', {
         allowNull: false,
     },
     sport_id: {
+        type: DataTypes.MEDIUMINT,
+        allowNull: false,
+    },
+    user_id: {
         type: DataTypes.MEDIUMINT,
         allowNull: false,
     },
@@ -48,5 +55,7 @@ const League = db.define('League', {
     createdAt: false,
     updatedAt: false,
 })
+
+League.belongsToMany(Team, { through: 'LeagueTeams' });
 
 export default League;

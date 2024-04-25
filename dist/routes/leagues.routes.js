@@ -10,4 +10,5 @@ routerLeague.get('/:id', generic_validation_1.idValidator, leagues_controller_1.
 routerLeague.delete('/:id', generic_validation_1.idValidator, leagues_controller_1.deleteLeague);
 routerLeague.post('/', league_validation_1.leagueValidator, leagues_controller_1.postLeague);
 routerLeague.patch('/:id', generic_validation_1.idValidator, league_validation_1.leagueValidator, leagues_controller_1.updateLeague);
+routerLeague.get('/id:/teams', leagues_controller_1.getLeagueTeams);
 exports.default = routerLeague;
