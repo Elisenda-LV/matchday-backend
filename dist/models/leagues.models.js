@@ -8,33 +8,40 @@ const db_1 = __importDefault(require("../config/db"));
 const teams_model_1 = __importDefault(require("./teams.model"));
 const League = db_1.default.define('League', {
     id_league: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-    },
-    sport_id: {
-        type: sequelize_1.DataTypes.MEDIUMINT,
+        defaultValue: sequelize_1.DataTypes.UUIDV4,
         allowNull: false,
     },
     user_id: {
-        type: sequelize_1.DataTypes.MEDIUMINT,
+        type: sequelize_1.DataTypes.UUID,
+        defaultValue: sequelize_1.DataTypes.UUIDV4,
         allowNull: false,
     },
     league_name: {
         type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
+    sport: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     gender: {
         type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     category: {
         type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     description: {
         type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     location: {
         type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
     },
     create_at: {
         type: sequelize_1.DataTypes.DATE,

@@ -3,8 +3,6 @@ import db from '../config/db';
 import Team from './teams.model';
 
 
-
-
 const League = db.define('League', {
 
     id_league: {
