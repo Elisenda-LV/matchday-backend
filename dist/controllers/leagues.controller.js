@@ -12,9 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLeagueTeams = exports.updateLeague = exports.postLeague = exports.deleteLeague = exports.getLeagueById = exports.getListLeagues = void 0;
+exports.updateLeague = exports.postLeague = exports.deleteLeague = exports.getLeagueById = exports.getListLeagues = void 0;
 const leagues_models_1 = __importDefault(require("../models/leagues.models"));
-const teams_model_1 = __importDefault(require("../models/teams.model"));
 const express_validator_1 = require("express-validator");
 //CRUD LEAGUES
 //Show Leagues list :
@@ -124,24 +123,3 @@ const updateLeague = (req, res) => __awaiter(void 0, void 0, void 0, function* (
 });
 exports.updateLeague = updateLeague;
 //Show league teams:
-const getLeagueTeams = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { id } = req.params;
-        const league = yield leagues_models_1.default.findByPk(id, {
-            include: teams_model_1.default
-        });
-        if (league) {
-            res.status(200).json(league);
-        }
-        else {
-            res.status(404).json({
-                msg: `There is no league with that id ${id}`
-            });
-        }
-    }
-    catch (error) {
-        console.error("Error retrieving league teams:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
-});
-exports.getLeagueTeams = getLeagueTeams;

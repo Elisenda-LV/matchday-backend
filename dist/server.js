@@ -17,10 +17,7 @@ const cors_1 = __importDefault(require("cors"));
 const db_1 = __importDefault(require("./config/db"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const leagues_routes_1 = __importDefault(require("./routes/leagues.routes"));
-const players_routes_1 = __importDefault(require("./routes/players.routes"));
-const sports_routes_1 = __importDefault(require("./routes/sports.routes"));
 const teams_routes_1 = __importDefault(require("./routes/teams.routes"));
-const team_player_routes_1 = __importDefault(require("./routes/team-player.routes"));
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const users_routes_1 = __importDefault(require("./routes/users.routes"));
 class Server {
@@ -53,16 +50,13 @@ class Server {
         this.app.use('/leagues', leagues_routes_1.default);
         this.app.use('/auth', auth_routes_1.default);
         this.app.use('/users', users_routes_1.default);
-        this.app.use('/players', players_routes_1.default);
-        this.app.use('/sports', sports_routes_1.default);
         this.app.use('/teams', teams_routes_1.default);
-        this.app.use('/teamsplayers', team_player_routes_1.default);
     }
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 yield db_1.default.authenticate();
-                console.log('DB connected');
+                console.log('DB connected 🚀 🚀 🚀');
             }
             catch (error) {
                 console.log(error);

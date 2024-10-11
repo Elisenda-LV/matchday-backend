@@ -4,16 +4,10 @@ import db from './config/db';
 import cookieParser from "cookie-parser";
 
 import routerLeague from "./routes/leagues.routes";
-import routerPlayer from "./routes/players.routes";
-import routerSport from "./routes/sports.routes";
 import routerTeam from "./routes/teams.routes";
-import routerTP from "./routes/team-player.routes";
+
 import routerAuth from "./routes/auth.routes";
 import routerUsers from "./routes/users.routes";
-
-
-
-
 
 class Server {
 
@@ -54,18 +48,13 @@ class Server {
         this.app.use('/leagues', routerLeague);
         this.app.use('/auth', routerAuth);
         this.app.use('/users', routerUsers);
-        this.app.use('/players', routerPlayer);
-        this.app.use('/sports', routerSport);
-        this.app.use('/teams', routerTeam);
-        this.app.use('/teamsplayers', routerTP);
-      
-        
+        this.app.use('/teams', routerTeam);        
     }
 
     async dbConnect(){
         try {
             await db.authenticate();
-            console.log('DB connected')
+            console.log('DB connected 🚀 🚀 🚀')
 
         } catch (error){
             console.log(error);

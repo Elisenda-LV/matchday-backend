@@ -1,3 +1,4 @@
+import LeagueTeams from "../models/league-teams.model";
 import League from "../models/leagues.models";
 import Team from "../models/teams.model";
 
@@ -134,25 +135,3 @@ export const updateLeague = async (req: Request, res: Response) => {
 
 //Show league teams:
 
-export const getLeagueTeams = async (req: Request, res: Response) => {
-
-    try {
-        const { id } = req.params;
-        const league = await League.findByPk(id, {
-            include: Team
-        });
-
-        if(league){
-            res.status(200).json(league)
-        }else{
-            res.status(404).json({
-                msg: `There is no league with that id ${id}`
-            })
-        }
-
-    } catch (error) {
-        console.error("Error retrieving league teams:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
-
-}
