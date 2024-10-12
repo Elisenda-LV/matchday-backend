@@ -3,12 +3,6 @@ import { check } from 'express-validator';
 
 export const leagueValidator = [
 
-    check('sport_id')
-        .exists()
-        .withMessage("Sport is required")
-        .isInt()
-        .withMessage('Sport is a integer'),
-
     check('user_id')
         .exists()
         .withMessage("User is required")

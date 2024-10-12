@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../config/db"));
 const teams_model_1 = __importDefault(require("./teams.model"));
-const League = db_1.default.define('League', {
+const League = db_1.default.define('leagues', {
     id_league: {
         type: sequelize_1.DataTypes.UUID,
         primaryKey: true,
@@ -43,7 +43,7 @@ const League = db_1.default.define('League', {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
-    create_at: {
+    created_at: {
         type: sequelize_1.DataTypes.DATE,
     },
     updated_at: {

@@ -42,7 +42,7 @@ Team.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    create_at: {
+    created_at: {
         type: DataTypes.DATE,
         
     },

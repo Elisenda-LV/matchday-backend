@@ -3,7 +3,7 @@ import db from '../config/db';
 import Team from './teams.model';
 
 
-const League = db.define('League', {
+const League = db.define('leagues', {
 
     id_league: {
         type: DataTypes.UUID,
@@ -47,7 +47,7 @@ const League = db.define('League', {
         allowNull: false,
 
     },
-    create_at: {
+    created_at: {
         type: DataTypes.DATE,
 
     },
